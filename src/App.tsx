@@ -1,7 +1,13 @@
-import Navbar    from './components/Navbar'
-import Hero      from './components/Hero'
-import Services  from './components/Services'
-// Additional components imported as each phase is completed
+import Navbar          from './components/Navbar'
+import Hero            from './components/Hero'
+import Services        from './components/Services'
+import FeatureShowcase from './components/FeatureShowcase'
+import Process         from './components/Process'
+import AIAgents        from './components/AIAgents'
+import Portfolio       from './components/Portfolio'
+import About           from './components/About'
+import Contact         from './components/Contact'
+import Footer          from './components/Footer'
 
 function App() {
   return (
@@ -10,13 +16,14 @@ function App() {
       <main>
         <Hero />
         <Services />
-
-        {/* Section anchors — keep nav scroll targets alive until real sections arrive */}
-        <div id="process"  style={{ height: '100px' }} />
-        <div id="projects" style={{ height: '100px' }} />
-        <div id="about"    style={{ height: '100px' }} />
-        <div id="contact"  style={{ height: '100px' }} />
+        <FeatureShowcase />
+        <Process />
+        <AIAgents />
+        <Portfolio />
+        <About />
+        <Contact />
       </main>
+      <Footer />
     </div>
   )
 }

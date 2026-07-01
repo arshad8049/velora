@@ -21,7 +21,7 @@ export const SERVICES: Service[] = [
     id:          'website-design',
     iconId:      'monitor',
     title:       'Website Design & Development',
-    description: 'Beautiful, fast, and conversion-focused websites built from scratch — designed to make your business look as good as it really is.',
+    description: 'Beautiful, fast, and conversion-focused websites built from scratch. Designed to make your business look as good as it really is.',
     features: [
       'Custom design, not a template',
       'Mobile-first & fully responsive',
@@ -33,7 +33,7 @@ export const SERVICES: Service[] = [
     id:          'ai-chatbots',
     iconId:      'chat',
     title:       'AI Chatbots',
-    description: 'A smart chat assistant that answers customer questions, captures leads, and guides visitors — 24 hours a day, without you lifting a finger.',
+    description: 'A smart chat assistant that answers customer questions, captures leads, and guides visitors. Available 24 hours a day, without you lifting a finger.',
     features: [
       'Trained on your business info',
       'Handles FAQs automatically',
@@ -46,7 +46,7 @@ export const SERVICES: Service[] = [
     id:          'ai-agents',
     iconId:      'agent',
     title:       'AI Agents for Business',
-    description: 'Purpose-built AI agents that handle repetitive back-office tasks — so your team can focus on work that actually needs a human.',
+    description: 'Purpose-built AI agents that handle repetitive back-office tasks, so your team can focus on work that actually needs a human.',
     features: [
       'Summarize & sort inquiries',
       'Follow-up email automation',
@@ -59,7 +59,7 @@ export const SERVICES: Service[] = [
     id:          'automation',
     iconId:      'automation',
     title:       'Business Automation',
-    description: 'Connect your tools and eliminate the manual steps in between. From new lead to booked appointment — automated, every time.',
+    description: 'Connect your tools and cut out the manual steps in between. From new lead to booked appointment, automated every time.',
     features: [
       'Form → CRM → Email pipelines',
       'Appointment reminders',
@@ -83,7 +83,7 @@ export const SERVICES: Service[] = [
     id:          'booking-systems',
     iconId:      'booking',
     title:       'Booking & Lead Systems',
-    description: 'Let clients book themselves in, submit inquiries, or request quotes — all routed to you automatically without back-and-forth emails.',
+    description: 'Let clients book themselves in, submit inquiries, or request quotes. Everything routes to you automatically, no back-and-forth emails.',
     features: [
       'Online appointment booking',
       'Lead capture & routing',

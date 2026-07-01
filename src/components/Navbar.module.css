@@ -41,13 +41,15 @@
 }
 
 .logoText {
-  font-size: var(--text-xl);
-  font-weight: var(--weight-black);
-  letter-spacing: var(--tracking-tighter);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
   background: var(--gradient-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: 1;
 }
 
 /* ─── Desktop nav ────────────────────────────────────────── */

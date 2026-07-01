@@ -1,0 +1,174 @@
+/* ============================================================
+   Portfolio Section — case study cards
+   ============================================================ */
+
+.portfolio {
+  position: relative;
+}
+
+.portfolio::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 40% at 50% 50%,
+    rgba(79, 70, 229, 0.05) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ─── Grid ──────────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ─── Card ──────────────────────────────────────────────────── */
+
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    border-color var(--duration-slow) var(--ease-in-out),
+    box-shadow   var(--duration-slow) var(--ease-in-out);
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Accent stripe at top — colour comes from inline style */
+.accent {
+  height: 3px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ─── Card body ─────────────────────────────────────────────── */
+
+.body {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  flex: 1;
+}
+
+/* Category + placeholder row */
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.category {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-violet-light);
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+}
+
+.placeholder {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* Card title */
+.title {
+  font-size: clamp(var(--text-xl), 2.5vw, var(--text-2xl));
+  font-weight: var(--weight-extrabold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  line-height: var(--leading-snug);
+}
+
+/* ─── P / S / R rows ────────────────────────────────────────── */
+
+.psrList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1;
+}
+
+.psr {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.psrLabel {
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-muted);
+}
+
+.psrText {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* Result gets a highlight treatment */
+.psrResult .psrLabel { color: #10b981; }
+.psrResult .psrText  {
+  color: var(--color-text-primary);
+  font-weight: var(--weight-medium);
+}
+
+/* ─── Tags ──────────────────────────────────────────────────── */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.tag {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+}
+
+/* ─── Bottom CTA ────────────────────────────────────────────── */
+
+.cta {
+  text-align: center;
+  margin-top: var(--space-14);
+}
+
+.ctaNote {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-4);
+}

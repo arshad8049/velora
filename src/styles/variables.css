@@ -46,7 +46,8 @@
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
 
   /* ─── Typography ────────────────────────────────────────── */
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans:    'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
 
   /* Scale */
   --text-xs:   0.75rem;    /* 12px */

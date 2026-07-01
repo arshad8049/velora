@@ -1,0 +1,166 @@
+/* ============================================================
+   Process Section — 6-step workflow timeline
+   ============================================================ */
+
+.process {
+  position: relative;
+  overflow: hidden;
+}
+
+.process::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 0% 50%, rgba(124, 58, 237, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 100% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ─── Step grid ─────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ─── Step card ─────────────────────────────────────────────── */
+
+.step {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  overflow: hidden;
+  transition:
+    border-color var(--duration-slow) var(--ease-in-out),
+    background   var(--duration-slow) var(--ease-in-out);
+}
+
+.step:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+/* Large faint step number in the background */
+.stepBgNumber {
+  position: absolute;
+  top: -8px;
+  right: var(--space-4);
+  font-size: 7rem;
+  font-weight: var(--weight-black);
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.03);
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── Step number badge ─────────────────────────────────────── */
+
+.stepNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-brand);
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-black);
+  margin-bottom: var(--space-5);
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+}
+
+/* ─── Icon ──────────────────────────────────────────────────── */
+
+.icon {
+  color: var(--color-violet-light);
+  margin-bottom: var(--space-4);
+  opacity: 0.85;
+}
+
+/* ─── Text ──────────────────────────────────────────────────── */
+
+.stepTitle {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+  line-height: var(--leading-snug);
+}
+
+.stepDesc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* ─── Connector line between steps (desktop 3-col layout) ───── */
+
+.connectorRow {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .connectorRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-10);
+    margin-top: calc(-1 * var(--space-4));
+  }
+
+  .connectorDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-violet);
+    opacity: 0.5;
+  }
+
+  .connectorLine {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      rgba(124, 58, 237, 0.15),
+      rgba(124, 58, 237, 0.4),
+      rgba(124, 58, 237, 0.15)
+    );
+    max-width: 120px;
+  }
+}
+
+/* ─── Bottom CTA ────────────────────────────────────────────── */
+
+.cta {
+  text-align: center;
+  margin-top: var(--space-16);
+}
+
+.ctaText {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.ctaText strong {
+  color: var(--color-text-primary);
+}

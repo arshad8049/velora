@@ -46,7 +46,7 @@ function ChatCard() {
           I need more leads
         </div>
         <div className={`${styles.bubble} ${styles.bubbleBot}`}>
-          On it — let me set that up for you ✓
+          On it! Setting that up for you now ✓
         </div>
       </div>
     </>
@@ -181,9 +181,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.18, ease: EASE }}
           >
-            I build modern websites, AI chatbots, and automation tools that help
+            We build modern websites, AI chatbots, and automation systems that help
             small businesses look professional, capture more leads, and stop doing
-            repetitive work manually.
+            repetitive work.
           </motion.p>
 
           <motion.div

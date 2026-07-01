@@ -96,29 +96,29 @@ velora/
 - `src/data/services.ts` — typed service data (icon ID, title, description, features, highlight flag)
 - `src/components/Services.tsx` + `Services.module.css` — 3-col responsive glass card grid, SVG icon map, scroll-reveal with stagger, hover lift + glow
 
-### Phase 7 — ServiceCard + Feature Showcase 🔲
+### Phase 7 — ServiceCard + Feature Showcase ✅
 - `src/components/ServiceCard.tsx` — extracted reusable service card component
 - `src/components/FeatureShowcase.tsx` + `FeatureShowcase.module.css` — Apple-style tabbed section: click a business type, see a visual mockup + description
 
-### Phase 8 — Features Data + Process 🔲
+### Phase 8 — Features Data + Process ✅
 - `src/data/features.ts` — feature showcase tab content
-- `src/components/Process.tsx` + `Process.module.css` — 6-step workflow (Discover → Plan → Design → Build → Launch → Improve), vertical timeline or horizontal cards
+- `src/components/Process.tsx` + `Process.module.css` — 6-step workflow (Discover, Plan, Design, Build, Launch, Improve), staggered grid with ghost numbers and stroke SVG icons
 
-### Phase 9 — AI Agents + Projects Data 🔲
-- `src/components/AIAgents.tsx` + `AIAgents.module.css` — AI agents explainer in plain business language, floating "task bubble" animation, example tasks
-- `src/data/projects.ts` — portfolio case study data (problem / solution / result)
+### Phase 9 — AI Agents + Projects Data ✅
+- `src/components/AIAgents.tsx` + `AIAgents.module.css` — AI agents explainer with live cycling task feed (AnimatePresence), floating chips, 7 capability items
+- `src/data/projects.ts` — portfolio case study data (problem / solution / result per project)
 
-### Phase 10 — Portfolio + About 🔲
-- `src/components/Portfolio.tsx` + `Portfolio.module.css` — placeholder case study cards with hover reveal
-- `src/components/About.tsx` + `About.module.css` — professional about-me section with placeholder copy
+### Phase 10 — Portfolio + About ✅
+- `src/components/Portfolio.tsx` + `Portfolio.module.css` — 2-col case study cards, accent stripe per project, dl/dt/dd PSR rows, result row highlighted
+- `src/components/About.tsx` + `About.module.css` — two-col layout, gradient avatar, stats, skill tags, dual CTA buttons
 
-### Phase 11 — Contact Form 🔲
-- `src/utils/validation.ts` — frontend form validation (name, email, message, business type, project type)
-- `src/components/Contact.tsx` + `Contact.module.css` — contact form (frontend-only stub; real submission requires a secure backend/serverless endpoint — clearly marked with TODO comments)
+### Phase 11 — Contact Form ✅
+- `src/utils/validation.ts` — frontend form validation (name, email, business, project type, message)
+- `src/components/Contact.tsx` + `Contact.module.css` — contact form with real-time error clearing, AnimatePresence form/success transition, char counter, loading/error states. Submission is a frontend stub with a prominent TODO comment for the real backend endpoint.
 
-### Phase 12 — Footer + Final Polish 🔲
-- `src/components/Footer.tsx` + `Footer.module.css` — footer with nav links, tagline, social placeholders, copyright
-- Final README, accessibility audit notes, deployment instructions
+### Phase 12 — Footer + Final Polish ✅
+- `src/components/Footer.tsx` + `Footer.module.css` — 4-col responsive footer with brand/tagline, nav links, services list, contact CTA, social icons, response badge, bottom copyright bar
+- README updated with all phases marked complete
 
 ---
 
@@ -159,9 +159,24 @@ velora/
 
 ---
 
-## Deployment (future)
+## Deployment
 
 ```bash
 npm run build        # outputs to dist/
-# deploy dist/ to Vercel, Netlify, or any static host
+npm run preview      # preview the production build locally
 ```
+
+Deploy `dist/` to any static host (Vercel recommended — zero config for Vite projects):
+
+1. Push the repo to GitHub
+2. Import the repo in vercel.com
+3. Vercel detects Vite automatically — no extra config needed
+4. Set a custom domain in the Vercel dashboard
+
+### Before going live
+
+- Replace the `submitForm` stub in `Contact.tsx` with a real serverless function (Vercel `/api/contact`, Resend, or Formspree)
+- Update social `href` values in `Footer.tsx` with real profile URLs
+- Replace placeholder project copy in `src/data/projects.ts` with real case studies
+- Swap the About section bio with real personal copy
+- Add a real Calendly or booking link to the About CTA button
