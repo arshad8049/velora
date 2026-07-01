@@ -1,0 +1,445 @@
+/* ============================================================
+   Hero Section
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 80px; /* clear fixed navbar */
+}
+
+/* ─── Background layers ─────────────────────────────────────── */
+
+.bgGlow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -5%,  rgba(124, 58, 237, 0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 85% 90%,  rgba(6, 182, 212, 0.09)  0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle dot-grid fades to edges */
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+}
+
+/* ─── Ambient orbs ──────────────────────────────────────────── */
+
+.orb1 {
+  position: absolute;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.11) 0%, transparent 70%);
+  top: -180px;
+  right: -120px;
+  pointer-events: none;
+  z-index: 0;
+  animation: orb-drift 20s ease-in-out infinite;
+}
+
+.orb2 {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+  bottom: -80px;
+  left: -60px;
+  pointer-events: none;
+  z-index: 0;
+  animation: orb-drift 26s ease-in-out infinite reverse;
+  animation-delay: -6s;
+}
+
+/* ─── Main content ──────────────────────────────────────────── */
+
+.contentWrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.content {
+  max-width: 660px;
+  padding-block: var(--space-16);
+}
+
+.headline {
+  font-size: clamp(var(--text-4xl), 6.5vw, var(--text-7xl));
+  font-weight: var(--weight-black);
+  letter-spacing: var(--tracking-tighter);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.subheadline {
+  font-size: clamp(var(--text-base), 2vw, var(--text-xl));
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 540px;
+  margin-bottom: var(--space-10);
+}
+
+.ctaGroup {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+}
+
+/* Larger CTA buttons in the hero */
+.ctaGroup .btn {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-base);
+}
+
+/* ─── Trust / social proof row ──────────────────────────────── */
+
+.trustLine {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+}
+
+.trustDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+/* ─── Floating UI cards (base) ──────────────────────────────── */
+
+.floatCard {
+  position: absolute;
+  background: rgba(13, 13, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  pointer-events: none;
+  z-index: 1;
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  /* Hidden on small screens */
+  display: none;
+}
+
+/* ─── Individual card positions & animations ────────────────── */
+
+.cardWebsite {
+  top: 14%;
+  right: 4%;
+  width: 195px;
+  animation: float 5.5s ease-in-out infinite;
+}
+
+.cardChat {
+  top: 42%;
+  right: 1%;
+  width: 215px;
+  animation: float-slow 7s ease-in-out infinite;
+  animation-delay: -2.5s;
+}
+
+.cardAnalytics {
+  bottom: 24%;
+  right: 5%;
+  width: 170px;
+  animation: float 6.5s ease-in-out infinite;
+  animation-delay: -1.2s;
+}
+
+.cardAutomation {
+  bottom: 8%;
+  right: 3%;
+  width: 205px;
+  animation: float-slow 8s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+/* Show cards only on large enough screens */
+@media (min-width: 1100px) {
+  .floatCard { display: block; }
+
+  /* Pull content left to make visual room for cards */
+  .content { max-width: 580px; }
+}
+
+/* ─── Browser mockup card ───────────────────────────────────── */
+
+.browserBar {
+  display: flex;
+  gap: 5px;
+  margin-bottom: var(--space-3);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.dot:nth-child(1) { background: #ef4444; }
+.dot:nth-child(2) { background: #f59e0b; }
+.dot:nth-child(3) { background: #10b981; }
+
+.browserBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mockLine {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.mockImg {
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.25) 0%,
+    rgba(6, 182, 212, 0.18) 100%
+  );
+  margin-block: var(--space-2);
+}
+
+/* ─── Chat card ─────────────────────────────────────────────── */
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.chatAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: var(--weight-black);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.chatName {
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
+  flex: 1;
+}
+
+.onlineDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
+  flex-shrink: 0;
+}
+
+.chatMessages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.bubble {
+  font-size: 10px;
+  line-height: 1.45;
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  max-width: 88%;
+  color: var(--color-text-primary);
+}
+
+.bubbleBot {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  align-self: flex-start;
+}
+
+.bubbleUser {
+  background: var(--gradient-brand);
+  align-self: flex-end;
+  color: #fff;
+}
+
+/* ─── Analytics card ────────────────────────────────────────── */
+
+.analyticsLabel {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 4px;
+}
+
+.analyticsValue {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-black);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: var(--space-2);
+}
+
+.analyticsTrack {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-3);
+}
+
+.analyticsFill {
+  height: 100%;
+  width: 78%;
+  background: var(--gradient-brand);
+  border-radius: var(--radius-full);
+}
+
+.analyticsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.up { color: #10b981; font-weight: var(--weight-semibold); }
+
+/* ─── Automation flow card ──────────────────────────────────── */
+
+.autoTitle {
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: var(--space-3);
+}
+
+.flowRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.flowNode {
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.flowNodeAi {
+  background: rgba(124, 58, 237, 0.2);
+  border-color: rgba(124, 58, 237, 0.45);
+  color: var(--color-violet-light);
+}
+
+.flowArrow {
+  font-size: 11px;
+  color: var(--color-violet-light);
+  flex-shrink: 0;
+}
+
+.autoStatus {
+  font-size: 10px;
+  color: #10b981;
+  font-weight: var(--weight-medium);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 5px rgba(16, 185, 129, 0.8);
+  flex-shrink: 0;
+}
+
+/* ─── Scroll indicator ──────────────────────────────────────── */
+
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(to bottom, var(--color-violet), transparent);
+  animation: fade-in-down 2.2s ease-in-out infinite;
+}
+
+/* ─── Reduced motion overrides ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .cardWebsite,
+  .cardChat,
+  .cardAnalytics,
+  .cardAutomation,
+  .orb1,
+  .orb2,
+  .scrollLine {
+    animation: none;
+  }
+}

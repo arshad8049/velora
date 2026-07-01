@@ -1,0 +1,192 @@
+/* ============================================================
+   Navbar — fixed header, glass on scroll, mobile menu
+   ============================================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  padding-block: var(--space-4);
+  transition:
+    background     var(--duration-slow) var(--ease-in-out),
+    border-color   var(--duration-slow) var(--ease-in-out),
+    box-shadow     var(--duration-slow) var(--ease-in-out);
+}
+
+.scrolled {
+  background: rgba(8, 8, 15, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* ─── Inner row ──────────────────────────────────────────── */
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+/* ─── Logo ───────────────────────────────────────────────── */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.logoText {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-black);
+  letter-spacing: var(--tracking-tighter);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Desktop nav ────────────────────────────────────────── */
+.desktopNav {
+  display: none;
+}
+
+.desktopNav ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.navLink {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  font-family: var(--font-sans);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    color      var(--duration-base) var(--ease-in-out),
+    background var(--duration-base) var(--ease-in-out);
+}
+
+.navLink:hover {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── CTA ────────────────────────────────────────────────── */
+.ctaBtn {
+  display: none;
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-5);
+}
+
+/* ─── Hamburger ──────────────────────────────────────────── */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  flex-shrink: 0;
+  /* sits above the mobile overlay */
+  position: relative;
+  z-index: 1;
+}
+
+.line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--color-text-primary);
+  border-radius: var(--radius-full);
+  transform-origin: center;
+  transition:
+    transform var(--duration-base) var(--ease-out-expo),
+    opacity   var(--duration-fast) var(--ease-in-out);
+}
+
+/* Animate lines → X when open */
+.hamburgerOpen .line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburgerOpen .line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburgerOpen .line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── Mobile overlay menu ────────────────────────────────── */
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 15, 0.97);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-10);
+  z-index: calc(var(--z-nav) - 1);
+
+  /* Hidden state */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition:
+    opacity   var(--duration-slow) var(--ease-out-expo),
+    transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.mobileMenu nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.mobileNavLink {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: clamp(var(--text-2xl), 6vw, var(--text-4xl));
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  font-family: var(--font-sans);
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: color var(--duration-base) var(--ease-in-out);
+}
+
+.mobileNavLink:hover {
+  color: var(--color-text-primary);
+}
+
+.mobileCtaBtn {
+  font-size: var(--text-base);
+  padding: var(--space-4) var(--space-10);
+}
+
+/* ─── Breakpoint: tablet and up ──────────────────────────── */
+@media (min-width: 768px) {
+  .desktopNav { display: flex; }
+  .ctaBtn     { display: inline-flex; }
+  .hamburger  { display: none; }
+  .mobileMenu { display: none; }
+}
