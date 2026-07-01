@@ -6,6 +6,8 @@ import Process         from './components/Process'
 import AIAgents        from './components/AIAgents'
 import Portfolio       from './components/Portfolio'
 import About           from './components/About'
+import Pricing         from './components/Pricing'
+import FAQ             from './components/FAQ'
 import Contact         from './components/Contact'
 import Footer          from './components/Footer'
 
@@ -21,6 +23,8 @@ function App() {
         <AIAgents />
         <Portfolio />
         <About />
+        <Pricing />
+        <FAQ />
         <Contact />
       </main>
       <Footer />
