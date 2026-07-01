@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding-top: 80px; /* clear fixed navbar */
+  padding-top: 80px;
 }
 
 /* ─── Background layers ─────────────────────────────────────── */
@@ -17,36 +17,36 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 55% at 50% -5%,  rgba(124, 58, 237, 0.18) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 40% at 85% 90%,  rgba(6, 182, 212, 0.09)  0%, transparent 60%);
+    radial-gradient(ellipse 85% 60% at 50% -10%,  rgba(124, 58, 237, 0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 45% at 90% 85%,   rgba(6, 182, 212, 0.12)  0%, transparent 60%),
+    radial-gradient(ellipse 45% 40% at 5%  70%,   rgba(124, 58, 237, 0.07) 0%, transparent 55%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Subtle dot-grid fades to edges */
 .bgGrid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
-  background-size: 56px 56px;
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 52px 52px;
   pointer-events: none;
   z-index: 0;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 0%, transparent 100%);
 }
 
 /* ─── Ambient orbs ──────────────────────────────────────────── */
 
 .orb1 {
   position: absolute;
-  width: 640px;
-  height: 640px;
+  width: 700px;
+  height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.11) 0%, transparent 70%);
-  top: -180px;
-  right: -120px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.13) 0%, transparent 70%);
+  top: -200px;
+  right: -140px;
   pointer-events: none;
   z-index: 0;
   animation: orb-drift 20s ease-in-out infinite;
@@ -54,16 +54,30 @@
 
 .orb2 {
   position: absolute;
-  width: 420px;
-  height: 420px;
+  width: 450px;
+  height: 450px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
-  bottom: -80px;
-  left: -60px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.09) 0%, transparent 70%);
+  bottom: -100px;
+  left: -70px;
   pointer-events: none;
   z-index: 0;
   animation: orb-drift 26s ease-in-out infinite reverse;
   animation-delay: -6s;
+}
+
+.orb3 {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.07) 0%, transparent 70%);
+  top: 45%;
+  left: 38%;
+  pointer-events: none;
+  z-index: 0;
+  animation: orb-drift 18s ease-in-out infinite;
+  animation-delay: -11s;
 }
 
 /* ─── Main content ──────────────────────────────────────────── */
@@ -104,13 +118,12 @@
   margin-bottom: var(--space-8);
 }
 
-/* Larger CTA buttons in the hero */
 .ctaGroup .btn {
   padding: var(--space-4) var(--space-8);
   font-size: var(--text-base);
 }
 
-/* ─── Trust / social proof row ──────────────────────────────── */
+/* ─── Trust line ────────────────────────────────────────────── */
 
 .trustLine {
   display: flex;
@@ -131,71 +144,120 @@
   flex-shrink: 0;
 }
 
-/* ─── Floating UI cards (base) ──────────────────────────────── */
+/* ─── Floating cards base ───────────────────────────────────── */
 
 .floatCard {
   position: absolute;
-  background: rgba(13, 13, 26, 0.7);
+  background: rgba(10, 10, 22, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.09);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: var(--radius-xl);
   padding: var(--space-4);
-  pointer-events: none;
   z-index: 1;
   box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.5),
+    0 8px 40px rgba(0, 0, 0, 0.55),
     inset 0 1px 0 rgba(255, 255, 255, 0.07);
-
-  /* Hidden on small screens */
   display: none;
+  cursor: default;
+  transition:
+    border-color 0.25s ease,
+    box-shadow   0.25s ease;
 }
 
-/* ─── Individual card positions & animations ────────────────── */
+.floatCard:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow:
+    0 16px 56px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(124, 58, 237, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
 
+/* ─── Card positions & float animations ─────────────────────── */
+/*
+   Two visual columns:
+   Outer (right edge):  Website, Chat, Speed, Automation
+   Inner (inset ~22%):  Revenue, Lead, Booking, Analytics
+
+   Each pair is offset vertically so they interleave like a staircase,
+   filling the full right half of the hero viewport.
+*/
+
+/* Outer column */
 .cardWebsite {
-  top: 14%;
+  top: 4%;
   right: 4%;
-  width: 195px;
+  width: 192px;
   animation: float 5.5s ease-in-out infinite;
 }
 
 .cardChat {
-  top: 42%;
-  right: 1%;
-  width: 215px;
+  top: 35%;
+  right: 3%;
+  width: 218px;
   animation: float-slow 7s ease-in-out infinite;
   animation-delay: -2.5s;
 }
 
-.cardAnalytics {
-  bottom: 24%;
-  right: 5%;
-  width: 170px;
-  animation: float 6.5s ease-in-out infinite;
-  animation-delay: -1.2s;
+.cardSpeed {
+  top: 62%;
+  right: 4%;
+  width: 146px;
+  animation: float 6s ease-in-out infinite;
+  animation-delay: -1.8s;
 }
 
 .cardAutomation {
-  bottom: 8%;
+  bottom: 4%;
   right: 3%;
-  width: 205px;
+  width: 204px;
   animation: float-slow 8s ease-in-out infinite;
   animation-delay: -4s;
 }
 
-/* Show cards only on large enough screens */
-@media (min-width: 1100px) {
-  .floatCard { display: block; }
-
-  /* Pull content left to make visual room for cards */
-  .content { max-width: 580px; }
+/* Inner column */
+.cardRevenue {
+  top: 8%;
+  right: 24%;
+  width: 160px;
+  animation: float-slow 7s ease-in-out infinite;
+  animation-delay: -1s;
 }
 
-/* ─── Browser mockup card ───────────────────────────────────── */
+.cardLead {
+  top: 28%;
+  right: 23%;
+  width: 210px;
+  animation: float 6.5s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+.cardBooking {
+  top: 53%;
+  right: 24%;
+  width: 186px;
+  animation: float-slow 7.5s ease-in-out infinite;
+  animation-delay: -0.8s;
+}
+
+.cardAnalytics {
+  bottom: 10%;
+  right: 23%;
+  width: 174px;
+  animation: float 6s ease-in-out infinite;
+  animation-delay: -2.2s;
+}
+
+@media (min-width: 1100px) {
+  .floatCard { display: block; }
+  .content   { max-width: 520px; }
+}
+
+/* ─── WebsiteCard ───────────────────────────────────────────── */
 
 .browserBar {
   display: flex;
+  align-items: center;
   gap: 5px;
   margin-bottom: var(--space-3);
 }
@@ -204,10 +266,19 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 .dot:nth-child(1) { background: #ef4444; }
 .dot:nth-child(2) { background: #f59e0b; }
 .dot:nth-child(3) { background: #10b981; }
+
+.urlBar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-full);
+  margin-left: 4px;
+}
 
 .browserBody {
   display: flex;
@@ -222,17 +293,193 @@
 }
 
 .mockImg {
-  height: 56px;
+  height: 52px;
   border-radius: var(--radius-md);
-  background: linear-gradient(
-    135deg,
-    rgba(124, 58, 237, 0.25) 0%,
-    rgba(6, 182, 212, 0.18) 100%
-  );
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.25) 0%, rgba(6, 182, 212, 0.18) 100%);
   margin-block: var(--space-2);
 }
 
-/* ─── Chat card ─────────────────────────────────────────────── */
+.mockBtn {
+  height: 20px;
+  width: 70%;
+  border-radius: var(--radius-md);
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.5), rgba(6, 182, 212, 0.4));
+  margin-top: var(--space-1);
+}
+
+/* ─── LeadCard ──────────────────────────────────────────────── */
+
+.leadHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.leadLiveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
+  flex-shrink: 0;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.leadTitle {
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.leadRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 40px;
+}
+
+.leadAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: var(--weight-bold);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.leadInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.leadName {
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.leadType {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.leadAgo {
+  font-size: 9px;
+  color: var(--color-violet-light);
+  font-weight: var(--weight-medium);
+  flex-shrink: 0;
+}
+
+.leadDivider {
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--space-2) 0;
+}
+
+.leadFooter {
+  display: flex;
+  align-items: baseline;
+}
+
+.leadCount {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-black);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.leadCountLabel {
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
+
+/* ─── RevenueCard ───────────────────────────────────────────── */
+
+.revenueLabel {
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+}
+
+.revenueValue {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.revenueTrend {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+}
+
+.revenueSub {
+  color: var(--color-text-muted);
+}
+
+/* ─── BookingCard ───────────────────────────────────────────── */
+
+.bookingCheck {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  color: #10b981;
+  margin-bottom: var(--space-3);
+}
+
+.bookingName {
+  font-size: 12px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: 3px;
+}
+
+.bookingMeta {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  margin-bottom: 3px;
+}
+
+.bookingTime {
+  font-size: 11px;
+  font-weight: var(--weight-medium);
+  color: var(--color-violet-light);
+  margin-bottom: var(--space-3);
+}
+
+.bookingSource {
+  font-size: 9px;
+  color: var(--color-text-muted);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ─── ChatCard ──────────────────────────────────────────────── */
 
 .chatHeader {
   display: flex;
@@ -298,7 +545,64 @@
   color: #fff;
 }
 
-/* ─── Analytics card ────────────────────────────────────────── */
+.typingRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
+  width: fit-content;
+}
+
+.typingDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  animation: pulse-glow 1.2s ease-in-out infinite;
+}
+
+/* ─── SpeedCard ─────────────────────────────────────────────── */
+
+.speedLabel {
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+  text-align: center;
+}
+
+.speedRingWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-2);
+  width: 56px;
+  height: 56px;
+}
+
+.speedScore {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.speedMeta {
+  font-size: 9px;
+  color: var(--color-text-muted);
+  text-align: center;
+  display: block;
+}
+
+/* ─── AnalyticsCard ─────────────────────────────────────────── */
 
 .analyticsLabel {
   font-size: 10px;
@@ -325,7 +629,7 @@
   background: rgba(255, 255, 255, 0.07);
   border-radius: var(--radius-full);
   overflow: hidden;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 
 .analyticsFill {
@@ -335,18 +639,37 @@
   border-radius: var(--radius-full);
 }
 
+/* Mini bar chart */
+.miniChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 32px;
+  margin-bottom: var(--space-2);
+}
+
+.miniBar {
+  flex: 1;
+  background: linear-gradient(to top, rgba(124, 58, 237, 0.6), rgba(6, 182, 212, 0.4));
+  border-radius: 2px 2px 0 0;
+  min-height: 4px;
+}
+
 .analyticsRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 10px;
   color: var(--color-text-secondary);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
-.up { color: #10b981; font-weight: var(--weight-semibold); }
+.up {
+  color: #10b981;
+  font-weight: var(--weight-semibold);
+}
 
-/* ─── Automation flow card ──────────────────────────────────── */
+/* ─── AutomationCard ────────────────────────────────────────── */
 
 .autoTitle {
   font-size: 10px;
@@ -362,7 +685,6 @@
   align-items: center;
   gap: 6px;
   margin-bottom: var(--space-3);
-  flex-wrap: wrap;
 }
 
 .flowNode {
@@ -373,7 +695,6 @@
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  white-space: nowrap;
 }
 
 .flowNodeAi {
@@ -388,6 +709,22 @@
   flex-shrink: 0;
 }
 
+.autoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.autoRowLabel { color: var(--color-text-muted); }
+
+.autoRowVal {
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+}
+
 .autoStatus {
   font-size: 10px;
   color: #10b981;
@@ -395,6 +732,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  margin-top: var(--space-2);
 }
 
 .statusDot {
@@ -431,15 +769,24 @@
   animation: fade-in-down 2.2s ease-in-out infinite;
 }
 
-/* ─── Reduced motion overrides ──────────────────────────────── */
+/* ─── Reduced motion ────────────────────────────────────────── */
+
 @media (prefers-reduced-motion: reduce) {
   .cardWebsite,
+  .cardRevenue,
+  .cardLead,
   .cardChat,
+  .cardBooking,
+  .cardSpeed,
   .cardAnalytics,
   .cardAutomation,
   .orb1,
   .orb2,
-  .scrollLine {
+  .orb3,
+  .scrollLine,
+  .leadLiveDot,
+  .typingDot,
+  .statusDot {
     animation: none;
   }
 }

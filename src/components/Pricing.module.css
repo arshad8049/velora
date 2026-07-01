@@ -183,10 +183,7 @@
 /* ─── Badge ─────────────────────────────────────────────────── */
 
 .badge {
-  position: absolute;
-  top: calc(-1 * var(--space-4));
-  left: 50%;
-  transform: translateX(-50%);
+  align-self: center;
   background: var(--gradient-brand);
   color: #fff;
   font-size: var(--text-xs);

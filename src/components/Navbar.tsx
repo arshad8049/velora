@@ -4,7 +4,8 @@ import styles from './Navbar.module.css'
 const NAV_LINKS = [
   { label: 'Services',  href: '#services' },
   { label: 'Process',   href: '#process'  },
-  { label: 'Projects',  href: '#projects' },
+  { label: 'Work',      href: '#projects' },
+  { label: 'Pricing',   href: '#pricing'  },
   { label: 'About',     href: '#about'    },
   { label: 'Contact',   href: '#contact'  },
 ] as const
@@ -73,7 +74,7 @@ export default function Navbar() {
           onClick={() => handleNavClick('#contact')}
           type="button"
         >
-          Book a Free Consultation
+          Start a Project
         </button>
 
         {/* ── Hamburger (mobile only) ── */}
@@ -122,7 +123,7 @@ export default function Navbar() {
           type="button"
           tabIndex={menuOpen ? 0 : -1}
         >
-          Book a Free Consultation
+          Start a Project
         </button>
       </div>
     </header>
