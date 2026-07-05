@@ -21,7 +21,7 @@ interface Tier {
 const TIERS: Tier[] = [
   {
     name:        'Website',
-    price:       '$150',
+    price:       '$250',
     desc:        'A complete, production-ready website designed, built, and live in 7 days.',
     highlighted: false,
     cta:         'Start a Project',
@@ -35,7 +35,7 @@ const TIERS: Tier[] = [
   },
   {
     name:        'Website + Chatbot',
-    price:       '$200',
+    price:       '$400',
     desc:        'Everything in Website, plus an AI chatbot that captures and qualifies leads around the clock.',
     stat:        'Businesses that respond to a lead within 5 minutes are 9x more likely to convert them. The chatbot does that automatically.',
     highlighted: true,
