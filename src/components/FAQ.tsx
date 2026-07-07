@@ -6,7 +6,7 @@ const EASE = [0.16, 1, 0.3, 1] as const
 
 const FAQS = [
   {
-    q: 'What is included in the $150 website?',
+    q: 'What is included in the $250 website?',
     a: 'A fully designed, mobile-responsive website with up to 5 pages, a contact form, and SEO setup so you show up in local searches. You provide the content and we handle everything else.',
   },
   {
@@ -27,7 +27,7 @@ const FAQS = [
   },
   {
     q: 'Can I add the chatbot to my site later?',
-    a: 'Yes. If you start with the $150 website and want to add the chatbot later, the upgrade is $50.',
+    a: 'Yes. If you start with the $250 website and want to add the chatbot later, the upgrade is $150.',
   },
   {
     q: 'What happens after the site goes live?',
